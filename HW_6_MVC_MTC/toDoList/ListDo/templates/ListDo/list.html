@@ -1,0 +1,18 @@
+{% extends 'ListDo/base.html' %}
+
+{% block content %}
+<h2>Список витрат</h2>
+
+<ul class="expense-list">
+    {% for expense in expenses %}
+        <li>
+            <span>{{ expense.title }} — {{ expense.amount }} грн</span>
+            <a class="delete-btn" href="{% url 'delete_expense' expense.id %}">Видалити</a>
+        </li>
+    {% empty %}
+        <li>Немає жодної витрати</li>
+    {% endfor %}
+</ul>
+
+<h3 class="total">Загальна сума: {{ total }} грн</h3>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+<h2>{{ recipe.title }}</h2>
+
+<p><strong>Опис:</strong> {{ recipe.description }}</p>
+
+<h3>Інгредієнти</h3>
+<ul>
+    {% for item in recipe.ingredients %}
+        <li>{{ item }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Інструкція приготування</h3>
+<p>{{ recipe.instructions|linebreaks }}</p>
+
+<a class="btn btn-secondary" href="{% url 'edit_recipe' recipe.id %}">Редагувати</a>
+<a class="btn btn-danger" href="{% url 'delete_recipe' recipe.id %}">Видалити</a>
+<a class="btn btn-primary" href="{% url 'recipe_list' %}">Назад до списку</a>
+{% endblock %}

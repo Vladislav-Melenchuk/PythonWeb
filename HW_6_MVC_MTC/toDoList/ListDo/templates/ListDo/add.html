@@ -1,0 +1,11 @@
+{% extends 'ListDo/base.html' %}
+
+{% block content %}
+<h2>Додати нову витрату</h2>
+
+<form method="post" class="form-box">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Додати</button>
+</form>
+{% endblock %}

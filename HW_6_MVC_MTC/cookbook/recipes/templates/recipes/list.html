@@ -1,0 +1,23 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+<h2>Список усіх страв</h2>
+
+<ul class="recipe-list">
+    {% for recipe in recipes %}
+        <li>
+            <div>
+                <strong>{{ recipe.title }}</strong><br>
+                <small>{{ recipe.description|truncatechars:80 }}</small>
+            </div>
+            <div>
+                <a class="btn btn-primary" href="{% url 'recipe_detail' recipe.id %}">Переглянути</a>
+                <a class="btn btn-secondary" href="{% url 'edit_recipe' recipe.id %}">Редагувати</a>
+                <a class="btn btn-danger" href="{% url 'delete_recipe' recipe.id %}">Видалити</a>
+            </div>
+        </li>
+    {% empty %}
+        <p>Поки що немає жодного рецепту.</p>
+    {% endfor %}
+</ul>
+{% endblock %}

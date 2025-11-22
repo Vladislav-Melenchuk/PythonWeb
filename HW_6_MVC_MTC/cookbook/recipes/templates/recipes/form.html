@@ -1,0 +1,20 @@
+{% extends 'recipes/base.html' %}
+
+{% block content %}
+{% if mode == 'add' %}
+    <h2>Додати новий рецепт</h2>
+{% else %}
+    <h2>Редагувати рецепт</h2>
+{% endif %}
+
+<div class="form-box">
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">
+            {% if mode == 'add' %}Додати{% else %}Зберегти{% endif %}
+        </button>
+        <a class="btn btn-secondary" href="{% url 'recipe_list' %}">Скасувати</a>
+    </form>
+</div>
+{% endblock %}

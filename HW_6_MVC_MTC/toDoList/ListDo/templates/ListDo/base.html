@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Облік витрат</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f4f7;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 700px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.15);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        nav a {
+            color: #0066cc;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        .expense-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .expense-list li {
+            display: flex;
+            justify-content: space-between;
+            background: #eef2f7;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+        }
+
+        .delete-btn {
+            color: #d90000;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .delete-btn:hover {
+            text-decoration: underline;
+        }
+
+        .total {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .form-box {
+            background: #eef2f7;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        button {
+            background: #0066cc;
+            color: white;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #004c99;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Облік витрат</h1>
+
+    <nav>
+        <a href="{% url 'expense_list' %}">Список витрат</a>
+        <a href="{% url 'add_expense' %}">Додати витрату</a>
+    </nav>
+
+    <hr>
+
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
