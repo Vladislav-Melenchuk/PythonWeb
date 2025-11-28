@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Планировщик задач</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+        }
+        h2 {
+            color: #333;
+            margin-top: 30px;
+        }
+        ol {
+            list-style-type: decimal;
+            padding-left: 20px;
+        }
+        li {
+            padding: 10px;
+            background-color: #fff;
+            margin: 5px 0;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        li.even {
+            background-color: #f9f9f9;
+        }
+        li.completed {
+            text-decoration: line-through;
+            color: #777;
+        }
+        .task-time {
+            font-weight: bold;
+            margin-left: 10px;
+            color: #555;
+        }
+        .completed-text {
+            font-size: 14px;
+            color: green;
+        }
+        .empty-message {
+            text-align: center;
+            font-size: 18px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Задачи на сегодня</h1>
+
+    <a href="{% url 'add_task' %}">Добавить задачу</a>
+
+    {% if categories %}
+        {% for category, tasks in categories.items %}
+            <h2>{{ category }}</h2>
+            <ol>
+                {% for task in tasks %}
+                    <li class="{% cycle 'even' 'odd' %} {% if task.completed %}completed{% endif %}">
+                        {{ forloop.counter }}. 
+                        <span>{{ task.title }}</span>
+                        <span class="task-time">{{ task.time }}</span>
+                        {% if task.completed %}
+                            <span class="completed-text">(выполнено)</span>
+                        {% endif %}
+                        <a href="{% url 'toggle_task' task.id %}">Изменить статус</a> | 
+                        <a href="{% url 'delete_task' task.id %}">Удалить</a>
+                    </li>
+                {% endfor %}
+            </ol>
+        {% endfor %}
+    {% else %}
+        <p class="empty-message">На сегодня задач нет.</p>
+    {% endif %}
+
+</body>
+</html>

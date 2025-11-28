@@ -1,0 +1,17 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ movie.title }}</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'movies/styles.css' %}">
+</head>
+<body>
+    <h1>{{ movie.title }}</h1>
+    <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" width="300">
+    <p><strong>Release date:</strong> {{ movie.release_date }}</p>
+    <p><strong>Country:</strong> {{ movie.country }}</p>
+    <p><strong>Description:</strong> {{ movie.description }}</p>
+    <a href="{% url 'home' %}">Back to movies</a>
+</body>
+</html>
