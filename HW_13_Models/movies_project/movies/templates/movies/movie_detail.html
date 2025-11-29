@@ -1,0 +1,23 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{{ movie.title }}</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'movies/styles.css' %}"
+    />
+  </head>
+  <body>
+    <h1>{{ movie.title }}</h1>
+    <p>{{ movie.description }}</p>
+    <p>Рейтинг: {{ movie.rating }}</p>
+    <p>Дата релиза: {{ movie.release_date }}</p>
+    <p>Страна: {{ movie.country }}</p>
+    <img src="{{ movie.poster.url }}" alt="{{ movie.title }} poster" />
+    <a href="{% url 'movie_edit' movie.pk %}">Редактировать</a>
+    <a href="{% url 'movie_delete' movie.pk %}">Удалить</a>
+  </body>
+</html>
