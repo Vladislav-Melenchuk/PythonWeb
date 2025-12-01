@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Movies</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'movies/styles.css' %}" />
+  </head>
+  <body>
+    <h1>Фильмы</h1>
+    <a href="{% url 'add_movie' %}">
+      <button>Добавить фильм</button>
+    </a>
+
+    <table>
+      <tr>
+        <th>Название</th>
+        <th>Рейтинг</th>
+        <th>Дата релиза</th>
+        <th>Действия</th>
+      </tr>
+      {% for movie in movies %}
+      <tr>
+        <td>{{ movie.title }}</td>
+        <td>{{ movie.rating }}</td>
+        <td>{{ movie.release_date }}</td>
+        <td>
+          <a href="{% url 'movie_detail' movie.pk %}">Просмотр</a>
+          <a href="{% url 'movie_edit' movie.pk %}">Редактировать</a>
+          <a href="{% url 'movie_delete' movie.pk %}">Удалить</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+#header {
+    background-color: #222;
+}
+
+#branding h1 {
+    color: #fff !important;
+}
+
+.module caption {
+    background: #333;
+    color: #fff;
+}
